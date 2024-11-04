@@ -22,9 +22,9 @@ export async function POST(request) {
   const { name, email, phone, message } = data;
 
   const params = {
-    Source: "mandula.abhilash@gmail.com", //TODO: Setup AWS to use this functionality
+    Source: process.env.EMAIL_FROM,
     Destination: {
-      ToAddresses: ["mandula.abhilash@gmail.com"], // Replace with self email to get the email updates
+      ToAddresses: [process.env.EMAIL_TO],
     },
     Message: {
       Subject: { Data: `New Contact Form Submission from ${name}` },
