@@ -61,20 +61,20 @@ export function ContactSection() {
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-5 w-5 text-muted-foreground" />
-                <p>+91 1234567890</p>
+                <p>+91 9849532155</p>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-5 w-5 text-muted-foreground" />
-                <p>contact@jnetworks.co.in</p>
+                <p>jnetworksbroadband@gmail.com</p>
               </div>
               <div className="flex items-center space-x-2">
                 <MessageSquare className="h-5 w-5 text-muted-foreground" />
-                <p>WhatsApp: +91 1234567890</p>
+                <p>WhatsApp: +91 9849532155</p>
               </div>
             </div>
             <div className="aspect-video w-full rounded-lg overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.930183947894!2d78.08343931493945!3d17.623756787919373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcbef2d00000001%3A0x2c3d9363b2%E6%8B%9B%E5%BE%85!2sPothireddypally%20X%20Road%2C%20Sangareddy%2C%20Telangana%20502295!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin"
+                src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=J Networks Broadband&ie=UTF8&t=&z=18&iwloc=B&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

@@ -13,16 +13,86 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Wifi, Zap, Download, Clock } from "lucide-react"
 
 const plans = [
-  { name: "JNB 250", speed: "10 Mbps", monthly: 250, halfYearly: 1375, yearly: 2500 },
-  { name: "JNB 300", speed: "15 Mbps", monthly: 300, halfYearly: 1650, yearly: 3000 },
-  { name: "JNB 350", speed: "20 Mbps", monthly: 350, halfYearly: 1925, yearly: 3500 },
-  { name: "JNB 400", speed: "30 Mbps", monthly: 400, halfYearly: 2200, yearly: 4000 },
-  { name: "JNB 500", speed: "40 Mbps", monthly: 500, halfYearly: 2750, yearly: 5000 },
-  { name: "JNB 600", speed: "50 Mbps", monthly: 600, halfYearly: 3300, yearly: 6000 },
-  { name: "JNB 750", speed: "75 Mbps", monthly: 750, halfYearly: 4125, yearly: 7500 },
-  { name: "JNB 900", speed: "100 Mbps", monthly: 900, halfYearly: 4950, yearly: 9000 },
-  { name: "JNB 1150", speed: "150 Mbps", monthly: 1150, halfYearly: 6325, yearly: 11500 },
-  { name: "JNB 1500", speed: "200 Mbps", monthly: 1500, halfYearly: 8250, yearly: 15000 },
+  { 
+    name: "JNB 250", 
+    speed: 10,
+    description: "Perfect for basic browsing and email",
+    monthly: 250, 
+    halfYearly: 1375, 
+    yearly: 2500 
+  },
+  { 
+    name: "JNB 300", 
+    speed: 15,
+    description: "Ideal for small households and light streaming",
+    monthly: 300, 
+    halfYearly: 1650, 
+    yearly: 3000 
+  },
+  { 
+    name: "JNB 350", 
+    speed: 20,
+    description: "Great for HD streaming and casual gaming",
+    monthly: 350, 
+    halfYearly: 1925, 
+    yearly: 3500 
+  },
+  { 
+    name: "JNB 400", 
+    speed: 30,
+    description: "Perfect for multiple devices and online gaming",
+    monthly: 400, 
+    halfYearly: 2200, 
+    yearly: 4000 
+  },
+  { 
+    name: "JNB 500", 
+    speed: 40,
+    description: "Excellent for 4K streaming and large downloads",
+    monthly: 500, 
+    halfYearly: 2750, 
+    yearly: 5000 
+  },
+  { 
+    name: "JNB 600", 
+    speed: 50,
+    description: "Ideal for smart homes and remote work",
+    monthly: 600, 
+    halfYearly: 3300, 
+    yearly: 6000 
+  },
+  { 
+    name: "JNB 750", 
+    speed: 75,
+    description: "Perfect for heavy streaming and large file transfers",
+    monthly: 750, 
+    halfYearly: 4125, 
+    yearly: 7500 
+  },
+  { 
+    name: "JNB 900", 
+    speed: 100,
+    description: "Ultimate experience for power users",
+    monthly: 900, 
+    halfYearly: 4950, 
+    yearly: 9000 
+  },
+  { 
+    name: "JNB 1150", 
+    speed: 150,
+    description: "Professional grade for businesses and content creators",
+    monthly: 1150, 
+    halfYearly: 6325, 
+    yearly: 11500 
+  },
+  { 
+    name: "JNB 1500", 
+    speed: 200,
+    description: "Enterprise level connectivity for demanding needs",
+    monthly: 1500, 
+    halfYearly: 8250, 
+    yearly: 15000 
+  },
 ]
 
 const features = [
@@ -78,8 +148,9 @@ export function BroadbandPlansDetailed() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="min-w-[150px]">Plan</TableHead>
+                  <TableHead className="min-w-[200px]">Plan</TableHead>
                   <TableHead>Speed</TableHead>
+                  <TableHead className="min-w-[200px]">Description</TableHead>
                   <TableHead className="text-right">Monthly</TableHead>
                   <TableHead className="text-right">Half Yearly</TableHead>
                   <TableHead className="text-right">Yearly</TableHead>
@@ -94,7 +165,8 @@ export function BroadbandPlansDetailed() {
                         {plan.name}
                       </div>
                     </TableCell>
-                    <TableCell>{plan.speed}</TableCell>
+                    <TableCell>{plan.speed} Mbps</TableCell>
+                    <TableCell>{plan.description}</TableCell>
                     <TableCell className="text-right">₹{plan.monthly}</TableCell>
                     <TableCell className="text-right">₹{plan.halfYearly}</TableCell>
                     <TableCell className="text-right">₹{plan.yearly}</TableCell>

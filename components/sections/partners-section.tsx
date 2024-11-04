@@ -6,11 +6,11 @@ import { Card } from "@/components/ui/card"
 const partners = [
   { 
     name: "Pioneer E Labs", 
-    logo: "https://pioneerlabs.in/images/logo.png"
+    logo: "/assets/images/partners/pioneer.png"
   },
   { 
     name: "Access Smart Solutions", 
-    logo: "https://accesssmartcard.com/images/logo.png"
+    logo: "/assets/images/partners/access.png"
   }
 ]
 
@@ -26,8 +26,8 @@ export function PartnersSection() {
         
         <div className="flex flex-wrap items-center justify-center gap-8">
           {partners.map((partner) => (
-            <Card key={partner.name} className="flex items-center justify-center p-8 bg-background w-[300px] h-[150px]">
-              <div className="relative w-full h-full">
+            <Card key={partner.name} className="flex items-center justify-center p-8 bg-background w-[350px] h-[200px]">
+              <div className="relative w-full h-full bg-white rounded-md">
                 <Image
                   src={partner.logo}
                   alt={partner.name}
