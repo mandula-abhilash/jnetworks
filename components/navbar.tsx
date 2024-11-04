@@ -19,10 +19,10 @@ export function Navbar() {
         </Link>
         
         <nav className="flex items-center gap-6">
-          <Link href="#plans" className="text-sm font-medium">
+          <Link href="/#plans" className="text-sm font-medium">
             Plans
           </Link>
-          <Link href="#contact" className="text-sm font-medium">
+          <Link href="/#contact" className="text-sm font-medium">
             Contact
           </Link>
           <ThemeToggle />

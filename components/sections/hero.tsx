@@ -1,5 +1,6 @@
-import { ArrowRight, Wifi } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -16,12 +17,12 @@ export function Hero() {
           </div>
           <div className="space-x-4">
             <Button asChild size="lg">
-              <a href="#plans">
+              <Link href="/#plans">
                 View Plans <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
+              </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="#contact">Contact Us</a>
+              <a href="/#contact">Contact Us</a>
             </Button>
           </div>
         </div>
