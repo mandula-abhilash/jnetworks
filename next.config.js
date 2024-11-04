@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -8,10 +7,10 @@ const nextConfig = {
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      'undici': false
+      undici: false,
     };
     return config;
-  }
+  },
 };
 
 module.exports = nextConfig;
