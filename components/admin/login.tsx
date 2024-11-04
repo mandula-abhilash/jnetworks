@@ -6,27 +6,17 @@ import { signInWithEmailAndPassword } from "firebase/auth"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { useToast } from "@/components/ui/use-toast"
 
 export function AdminLogin() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const { toast } = useToast()
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
       await signInWithEmailAndPassword(auth, email, password)
-      toast({
-        title: "Success",
-        description: "Logged in successfully",
-      })
     } catch (error: any) {
-      toast({
-        title: "Error",
-        description: error.message,
-        variant: "destructive",
-      })
+     
     }
   }
 
