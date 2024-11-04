@@ -11,6 +11,8 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
+console.log(process.env.AWS_REGION)
+
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
