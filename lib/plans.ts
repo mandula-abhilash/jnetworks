@@ -10,8 +10,9 @@ import {
 
 export interface BroadbandPlan {
   id?: string;
+  description: string;
   name: string;
-  speed: string;
+  speed: number;
   monthly: number;
   halfYearly: number;
   yearly: number;
@@ -19,8 +20,8 @@ export interface BroadbandPlan {
 
 export interface OTTPlan {
   id?: string;
-  name: string;
   description: string;
+  name: string;
   apps: string[];
   features: string[];
 }

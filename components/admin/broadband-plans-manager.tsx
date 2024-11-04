@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { getAuth, onAuthStateChanged } from "firebase/auth"; 
 import { BroadbandPlan, getBroadbandPlans, addBroadbandPlan, updateBroadbandPlan, deleteBroadbandPlan } from "@/lib/plans"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -34,15 +35,27 @@ export function BroadbandPlansManager() {
   const [error, setError] = useState<string | null>(null)
   const [newPlan, setNewPlan] = useState<Omit<BroadbandPlan, 'id'>>({
     name: "",
-    speed: "",
+    description: "",
+    speed: 0,
     monthly: 0,
     halfYearly: 0,
     yearly: 0,
   })
 
-  useEffect(() => {
-    fetchPlans()
-  }, [])
+   // Firebase Authentication Check
+   useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        fetchPlans();
+      } else {
+        setError("User is not authenticated. Please log in to access this page.");
+        setLoading(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const fetchPlans = async () => {
     try {
@@ -65,7 +78,8 @@ export function BroadbandPlansManager() {
       await fetchPlans()
       setNewPlan({
         name: "",
-        speed: "",
+        description: "",
+        speed: 0,
         monthly: 0,
         halfYearly: 0,
         yearly: 0,
@@ -144,8 +158,8 @@ export function BroadbandPlansManager() {
               value={editingPlan?.speed ?? newPlan.speed}
               onChange={(e) =>
                 editingPlan
-                  ? setEditingPlan({ ...editingPlan, speed: e.target.value })
-                  : setNewPlan({ ...newPlan, speed: e.target.value })
+                  ? setEditingPlan({ ...editingPlan, speed: Number(e.target.value) })
+                  : setNewPlan({ ...newPlan, speed: Number(e.target.value) })
               }
             />
             <Input
