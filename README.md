@@ -3,6 +3,7 @@
 1. **Prepare your code**:
    - Clean up any debug or console logs.
    - Commit and push your latest changes to the main branch.
+   - Kill the dev server
 
 2. **Build the Next.js project**:
    - Run the build command to generate optimized production files.

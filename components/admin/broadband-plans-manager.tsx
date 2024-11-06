@@ -143,69 +143,98 @@ export function BroadbandPlansManager() {
 
       <Card>
         <CardContent className="pt-6">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            <Input
-              placeholder="Name"
-              value={editingPlan?.name ?? newPlan.name}
-              onChange={(e) =>
-                editingPlan
-                  ? setEditingPlan({ ...editingPlan, name: e.target.value })
-                  : setNewPlan({ ...newPlan, name: e.target.value })
-              }
-            />
-            <Input
-              placeholder="Speed"
-              value={editingPlan?.speed ?? newPlan.speed}
-              onChange={(e) =>
-                editingPlan
-                  ? setEditingPlan({ ...editingPlan, speed: Number(e.target.value) })
-                  : setNewPlan({ ...newPlan, speed: Number(e.target.value) })
-              }
-            />
-            <Input
-              type="number"
-              placeholder="Monthly Price"
-              value={editingPlan?.monthly ?? newPlan.monthly}
-              onChange={(e) =>
-                editingPlan
-                  ? setEditingPlan({
-                      ...editingPlan,
-                      monthly: Number(e.target.value),
-                    })
-                  : setNewPlan({ ...newPlan, monthly: Number(e.target.value) })
-              }
-            />
-            <Input
-              type="number"
-              placeholder="Half Yearly Price"
-              value={editingPlan?.halfYearly ?? newPlan.halfYearly}
-              onChange={(e) =>
-                editingPlan
-                  ? setEditingPlan({
-                      ...editingPlan,
-                      halfYearly: Number(e.target.value),
-                    })
-                  : setNewPlan({
-                      ...newPlan,
-                      halfYearly: Number(e.target.value),
-                    })
-              }
-            />
-            <Input
-              type="number"
-              placeholder="Yearly Price"
-              value={editingPlan?.yearly ?? newPlan.yearly}
-              onChange={(e) =>
-                editingPlan
-                  ? setEditingPlan({
-                      ...editingPlan,
-                      yearly: Number(e.target.value),
-                    })
-                  : setNewPlan({ ...newPlan, yearly: Number(e.target.value) })
-              }
-            />
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+              <Input
+                value={editingPlan?.name ?? newPlan.name}
+                onChange={(e) =>
+                  editingPlan
+                    ? setEditingPlan({ ...editingPlan, name: e.target.value })
+                    : setNewPlan({ ...newPlan, name: e.target.value })
+                }
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+              <Input
+                value={editingPlan?.description ?? newPlan.description}
+                onChange={(e) =>
+                  editingPlan
+                    ? setEditingPlan({ ...editingPlan, description: e.target.value })
+                    : setNewPlan({ ...newPlan, description: e.target.value })
+                }
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Speed (Mbps)</label>
+              <Input
+                placeholder="Speed"
+                value={editingPlan?.speed ?? newPlan.speed}
+                onChange={(e) =>
+                  editingPlan
+                    ? setEditingPlan({ ...editingPlan, speed: Number(e.target.value) })
+                    : setNewPlan({ ...newPlan, speed: Number(e.target.value) })
+                }
+              />
+            </div>
+            <div>
+              <div className="grid grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Monthly Price (₹)</label>
+                  <Input
+                    type="number"
+                    placeholder="Monthly Price"
+                    value={editingPlan?.monthly ?? newPlan.monthly}
+                    onChange={(e) =>
+                      editingPlan
+                        ? setEditingPlan({
+                            ...editingPlan,
+                            monthly: Number(e.target.value),
+                          })
+                        : setNewPlan({ ...newPlan, monthly: Number(e.target.value) })
+                    }
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Half Yearly Price (₹)</label>
+                  <Input
+                    type="number"
+                    placeholder="Half Yearly Price"
+                    value={editingPlan?.halfYearly ?? newPlan.halfYearly}
+                    onChange={(e) =>
+                      editingPlan
+                        ? setEditingPlan({
+                            ...editingPlan,
+                            halfYearly: Number(e.target.value),
+                          })
+                        : setNewPlan({
+                            ...newPlan,
+                            halfYearly: Number(e.target.value),
+                          })
+                    }
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Yearly Price (₹)</label>
+                  <Input
+                    type="number"
+                    placeholder="Yearly Price"
+                    value={editingPlan?.yearly ?? newPlan.yearly}
+                    onChange={(e) =>
+                      editingPlan
+                        ? setEditingPlan({
+                            ...editingPlan,
+                            yearly: Number(e.target.value),
+                          })
+                        : setNewPlan({ ...newPlan, yearly: Number(e.target.value) })
+                    }
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="flex gap-2 mt-4">
+          <div className="flex gap-2 mt-10 justify-end">
             {editingPlan ? (
               <>
                 <Button
@@ -245,19 +274,21 @@ export function BroadbandPlansManager() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Speed</TableHead>
-                <TableHead>Monthly</TableHead>
-                <TableHead>Half Yearly</TableHead>
-                <TableHead>Yearly</TableHead>
-                <TableHead>Actions</TableHead>
+                <TableHead className="w-1/6">Name</TableHead>
+                <TableHead className="w-2/6">Description</TableHead>
+                <TableHead className="w-1/6">Speed</TableHead>
+                <TableHead className="w-1/6">Monthly</TableHead>
+                <TableHead className="w-1/6">Half Yearly</TableHead>
+                <TableHead className="w-1/6">Yearly</TableHead>
+                <TableHead className="w-1/6">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {plans.map((plan) => (
                 <TableRow key={plan.id}>
                   <TableCell>{plan.name}</TableCell>
-                  <TableCell>{plan.speed}</TableCell>
+                  <TableCell>{plan.description}</TableCell>
+                  <TableCell>{plan.speed} Mbps</TableCell>
                   <TableCell>₹{plan.monthly}</TableCell>
                   <TableCell>₹{plan.halfYearly}</TableCell>
                   <TableCell>₹{plan.yearly}</TableCell>
