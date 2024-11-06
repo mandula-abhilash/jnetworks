@@ -9,8 +9,12 @@ const partners = [
     logo: "/assets/images/partners/pioneer.png"
   },
   { 
-    name: "Access Smart Solutions", 
-    logo: "/assets/images/partners/access.png"
+    name: "Iconwave Technologies Private Limited", 
+    logo: "/assets/images/partners/icon-wave.svg"
+  },
+  { 
+    name: "PlayboxTv", 
+    logo: "/assets/images/partners/play-box-tv.png"
   }
 ]
 
@@ -26,8 +30,8 @@ export function PartnersSection() {
         
         <div className="flex flex-wrap items-center justify-center gap-8">
           {partners.map((partner) => (
-            <Card key={partner.name} className="flex items-center justify-center p-8 bg-background w-[350px] h-[200px]">
-              <div className="relative w-full h-full bg-white rounded-md">
+            <Card key={partner.name} className="flex items-center justify-center p-4 w-[350px] h-[200px]">
+              <div className="relative w-full h-full bg-gray-900 rounded-md">
                 <Image
                   src={partner.logo}
                   alt={partner.name}

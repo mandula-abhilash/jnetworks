@@ -30,7 +30,6 @@ const ottPlans = [
     features: [
       "Multiple device support",
       "HD content",
-      "Ad-free experience",
       "Downloads available",
     ],
   },
@@ -60,7 +59,6 @@ const ottPlans = [
     features: [
       "Multiple device support",
       "HD & 4K content",
-      "Ad-free experience",
       "Priority support",
     ],
   },
@@ -95,7 +93,6 @@ const ottPlans = [
     features: [
       "Multiple device support",
       "HD & 4K content",
-      "Ad-free experience",
       "Premium content access",
     ],
   },
