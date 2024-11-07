@@ -71,30 +71,11 @@ export function BroadbandPlansManager() {
     }
   }
 
-  
-  // Function to trigger revalidation of the broadband plans page
-  async function triggerRevalidation() {
-    try {
-      await fetch('/api/revalidate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ secret: process.env.NEXT_PUBLIC_REVALIDATE_SECRET }),
-      });
-    } catch (err) {
-      console.error("Failed to trigger revalidation:", err);
-    }
-  }
-  
   const handleAddPlan = async () => {
     try {
       setSaving(true)
       await addBroadbandPlan(newPlan)
       await fetchPlans()
-
-      // Revalidate page after successful addition
-      await triggerRevalidation();
 
       setNewPlan({
         name: "",
@@ -122,9 +103,6 @@ export function BroadbandPlansManager() {
       await updateBroadbandPlan(id, planData)
       await fetchPlans()
 
-      // Revalidate page after successful update
-      await triggerRevalidation();
-
       setEditingPlan(null)
       setError(null)
     } catch (err) {
@@ -140,9 +118,6 @@ export function BroadbandPlansManager() {
       setSaving(true)
       await deleteBroadbandPlan(id)
       await fetchPlans()
-
-      // Revalidate page after successful deletion
-      await triggerRevalidation();
 
       setError(null)
     } catch (err) {

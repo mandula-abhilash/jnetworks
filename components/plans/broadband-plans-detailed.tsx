@@ -1,6 +1,3 @@
-// pages/broadband-plans.tsx
-import { GetStaticProps } from 'next';
-import { BroadbandPlan, getBroadbandPlans } from '@/lib/plans'; // Adjust the import path as necessary
 import {
   Table,
   TableBody,
@@ -12,8 +9,9 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Wifi, Zap, Download, Clock } from "lucide-react";
+import { BroadbandPlan } from "@/lib/plans";
 
-interface BroadbandPlansPageProps {
+interface BroadbandPlansDetailedProps {
   broadbandPlans: BroadbandPlan[];
 }
 
@@ -40,7 +38,7 @@ const features = [
   },
 ];
 
-export function BroadbandPlansDetailed({ broadbandPlans }: BroadbandPlansPageProps) {
+export function BroadbandPlansDetailed({ broadbandPlans }: BroadbandPlansDetailedProps) {
   return (
     <div className="space-y-12">
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -122,23 +120,3 @@ export function BroadbandPlansDetailed({ broadbandPlans }: BroadbandPlansPagePro
     </div>
   );
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const broadbandPlans = await getBroadbandPlans();
-    
-    return {
-      props: {
-        broadbandPlans,
-      },
-      revalidate: 60 * 60 * 24, // Optionally revalidate every 24 hours
-    };
-  } catch (error) {
-    console.error('Error fetching plans:', error);
-    return {
-      props: {
-        broadbandPlans: [],
-      },
-    };
-  }
-};
