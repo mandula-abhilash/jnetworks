@@ -29,7 +29,8 @@ export interface OTTPlan {
 // Broadband Plans
 export async function getBroadbandPlans() {
   const querySnapshot = await getDocs(collection(db, 'broadbandPlans'));
-  return querySnapshot.docs.map(doc => ({
+  return querySnapshot.docs.map(doc => 
+    ({
     id: doc.id,
     ...doc.data()
   })) as BroadbandPlan[];
