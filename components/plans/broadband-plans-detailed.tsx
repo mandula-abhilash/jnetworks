@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -9,11 +10,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Wifi, Zap, Download, Clock } from "lucide-react";
-import { BroadbandPlan } from "@/lib/plans";
-
-interface BroadbandPlansDetailedProps {
-  broadbandPlans: BroadbandPlan[];
-}
+import { BroadbandPlan, getBroadbandPlans } from "@/lib/plans";
 
 const features = [
   {
@@ -38,9 +35,31 @@ const features = [
   },
 ];
 
-export function BroadbandPlansDetailed({ broadbandPlans }: BroadbandPlansDetailedProps) {
+export function BroadbandPlansDetailed() {
+  const [broadbandPlans, setBroadbandPlans] = useState<BroadbandPlan[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchPlans() {
+      try {
+        const plans = await getBroadbandPlans();
+        setBroadbandPlans(plans);
+        setError(null);
+      } catch (error) {
+        console.error("Error fetching plans:", error);
+        setError("Failed to load plans. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPlans();
+  }, []);
+
   return (
     <div className="space-y-12">
+      {/* Feature Cards */}
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {features.map((feature) => {
           const Icon = feature.icon;
@@ -62,42 +81,61 @@ export function BroadbandPlansDetailed({ broadbandPlans }: BroadbandPlansDetaile
         })}
       </div>
 
+      {/* Broadband Plans Table */}
       <Card>
         <CardContent className="pt-6">
           <div className="rounded-lg border bg-card text-card-foreground shadow-sm overflow-x-auto">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-1/12">Plan</TableHead>
-                  <TableHead className="w-1/12">Speed</TableHead>
-                  <TableHead className="w-auto">Description</TableHead>
-                  <TableHead className="w-1/12 text-right">Monthly</TableHead>
-                  <TableHead className="w-1/12 text-right">Half Yearly</TableHead>
-                  <TableHead className="w-1/12 text-right">Yearly</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {broadbandPlans.map((plan) => (
-                  <TableRow key={plan.id || plan.name}>
-                    <TableCell className="font-medium">
-                      <div className="flex items-center gap-2">
-                        {Wifi && <Wifi className="h-4 w-4 text-primary" />}
-                        {plan.name}
-                      </div>
-                    </TableCell>
-                    <TableCell>{plan.speed} Mbps</TableCell>
-                    <TableCell>{plan.description}</TableCell>
-                    <TableCell className="text-right">₹{plan.monthly}</TableCell>
-                    <TableCell className="text-right">₹{plan.halfYearly}</TableCell>
-                    <TableCell className="text-right">₹{plan.yearly}</TableCell>
+            {loading ? (
+              <p className="text-center py-4">Loading plans...</p>
+            ) : error ? (
+              <p className="text-center text-red-500 py-4">{error}</p>
+            ) : (
+              <Table className="px-10">
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-1/12">Plan</TableHead>
+                    <TableHead className="w-1/12">Speed</TableHead>
+                    <TableHead className="w-auto">Description</TableHead>
+                    <TableHead className="w-1/12 text-right">Monthly</TableHead>
+                    <TableHead className="w-1/12 text-right">Half Yearly</TableHead>
+                    <TableHead className="w-1/12 text-right">Yearly</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {broadbandPlans.map((plan) => {
+                    // Define classes based on the speed to highlight certain plans
+                    let highlightClass = "";
+
+                    if (plan.speed === 50) {
+                      // highlightClass = "bg-yellow-100 hover:scale-105 font-bold px-4"; // Most popular (more pronounced)
+                    } else if (plan.speed === 40 || plan.speed === 75) {
+                      // highlightClass = "bg-yellow-50"; // Other popular plans (less pronounced)
+                    }
+
+                    return (
+                      <TableRow key={plan.id || plan.name} className={`${highlightClass} transition-transform`}>
+                        <TableCell className="font-medium">
+                          <div className="flex items-center gap-2">
+                            {Wifi && <Wifi className="h-4 w-4 text-primary" />}
+                            {plan.name}
+                          </div>
+                        </TableCell>
+                        <TableCell>{plan.speed} Mbps</TableCell>
+                        <TableCell>{plan.description}</TableCell>
+                        <TableCell className="text-right">₹{plan.monthly}</TableCell>
+                        <TableCell className="text-right">₹{plan.halfYearly}</TableCell>
+                        <TableCell className="text-right">₹{plan.yearly}</TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </Table>
+            )}
           </div>
         </CardContent>
       </Card>
 
+      {/* Additional Information */}
       <Card>
         <CardContent className="pt-6 space-y-4">
           <h3 className="font-semibold">Additional Information</h3>
