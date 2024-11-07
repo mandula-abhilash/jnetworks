@@ -6,6 +6,8 @@ import {
   updateDoc,
   deleteDoc,
   doc,
+  query,
+  orderBy,
 } from 'firebase/firestore';
 
 export interface BroadbandPlan {
@@ -28,9 +30,9 @@ export interface OTTPlan {
 
 // Broadband Plans
 export async function getBroadbandPlans() {
-  const querySnapshot = await getDocs(collection(db, 'broadbandPlans'));
-  return querySnapshot.docs.map(doc => 
-    ({
+  const q = query(collection(db, 'broadbandPlans'), orderBy('speed', 'asc'));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map(doc => ({
     id: doc.id,
     ...doc.data()
   })) as BroadbandPlan[];
