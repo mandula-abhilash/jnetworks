@@ -68,12 +68,12 @@ export function BroadbandPlansDetailed({ broadbandPlans }: BroadbandPlansDetaile
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="min-w-[200px]">Plan</TableHead>
-                  <TableHead>Speed</TableHead>
-                  <TableHead className="min-w-[200px]">Description</TableHead>
-                  <TableHead className="text-right">Monthly</TableHead>
-                  <TableHead className="text-right">Half Yearly</TableHead>
-                  <TableHead className="text-right">Yearly</TableHead>
+                  <TableHead className="w-1/12">Plan</TableHead>
+                  <TableHead className="w-1/12">Speed</TableHead>
+                  <TableHead className="w-auto">Description</TableHead>
+                  <TableHead className="w-1/12 text-right">Monthly</TableHead>
+                  <TableHead className="w-1/12 text-right">Half Yearly</TableHead>
+                  <TableHead className="w-1/12 text-right">Yearly</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
