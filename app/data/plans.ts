@@ -235,7 +235,7 @@ export const ottPlansData: OTTPlan[] = [
     },
     premiumApps: [
       {
-        name: "Amazon Prime Lite",
+        name: "Prime Lite",
         logoPath: "/assets/images/ott-partners/amazon-prime-lite.jpg"
       },
       {
@@ -290,7 +290,7 @@ export const ottPlansData: OTTPlan[] = [
     },
     premiumApps: [
       {
-        name: "Amazon Prime Lite",
+        name: "Prime Lite",
         logoPath: "/assets/images/ott-partners/amazon-prime-lite.jpg"
       },
       {

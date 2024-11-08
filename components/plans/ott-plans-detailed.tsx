@@ -153,7 +153,7 @@ export function OTTPlansDetailed() {
                   </div>
 
                   <button 
-                    className="w-full py-2 px-4 bg-primary/10 rounded-lg text-primary hover:bg-primary/20 transition-colors"
+                    className="w-full py-2 px-4 bg-primary/10 rounded-lg text-primary text-sm hover:bg-primary/20 transition-colors"
                     onClick={() => setSelectedPlan(plan.name)}
                   >
                     See Plan Details & Pricing
@@ -184,7 +184,7 @@ export function OTTPlansDetailed() {
                               <div className="text-sm text-muted-foreground">
                                 {durationLabels[price.duration]}
                               </div>
-                              <div className="text-2xl font-bold">₹{price.price}</div>
+                              <div className="text-xl font-bold">₹{price.price}</div>
                             </div>
                           ))}
                         </div>
