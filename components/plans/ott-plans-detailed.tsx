@@ -1,7 +1,8 @@
 "use client"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Check, Tv, Smartphone, Laptop, Users } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Check, Tv, Smartphone, Laptop, Users } from "lucide-react";
+import Image from "next/image";
 
 const ottPlans = [
   {
@@ -96,7 +97,7 @@ const ottPlans = [
       "Premium content access",
     ],
   },
-]
+];
 
 const features = [
   {
@@ -119,14 +120,40 @@ const features = [
     title: "Offline Viewing",
     description: "Download content for offline access",
   },
-]
+];
+
+const ottLogos = [
+  "/assets/images/ott-partners/sony-liv.png",
+  "/assets/images/ott-partners/zee5.png",
+  "/assets/images/ott-partners/disney-hotstar.png",
+  "/assets/images/ott-partners/sun-nxt.png",
+  "/assets/images/ott-partners/shemaroo.png",
+  "/assets/images/ott-partners/alt.png",
+  "/assets/images/ott-partners/om-tv.png",
+  "/assets/images/ott-partners/fancode.png",
+  "/assets/images/ott-partners/aano-nxt.png",
+  "/assets/images/ott-partners/gaana.png",
+  "/assets/images/ott-partners/discovery.png",
+  "/assets/images/ott-partners/chaupal.png",
+  "/assets/images/ott-partners/itap.png",
+  "/assets/images/ott-partners/one.png",
+  "/assets/images/ott-partners/stage.png",
+  "/assets/images/ott-partners/hungama.png",
+  "/assets/images/ott-partners/distro-tv.png",
+  "/assets/images/ott-partners/raj-tv.png",
+  "/assets/images/ott-partners/aha.png",
+  "/assets/images/ott-partners/kanccha-lannka.png",
+  "/assets/images/ott-partners/hubhopper.png",
+  "/assets/images/ott-partners/bongo.png",
+  "/assets/images/ott-partners/etv-win.png",
+];
 
 export function OTTPlansDetailed() {
   return (
     <div className="space-y-12">
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {features.map((feature) => {
-          const Icon = feature.icon
+          const Icon = feature.icon;
           return (
             <Card key={feature.title}>
               <CardContent className="pt-6">
@@ -141,8 +168,25 @@ export function OTTPlansDetailed() {
                 </p>
               </CardContent>
             </Card>
-          )
+          );
         })}
+      </div>
+
+      <div className="mt-12">
+        <h4 className="font-semibold mb-4 text-center">Our OTT Partners</h4>
+        <div className="flex flex-wrap justify-center gap-4">
+          {ottLogos.map((logo, index) => (
+            <div key={index} className="w-28 h-28">
+              <Image
+                src={logo}
+                alt={`OTT Partner Logo ${index + 1}`}
+                width={140}
+                height={140}
+                className="object-contain rounded-md"
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="grid md:grid-cols-3 gap-6">
@@ -186,6 +230,8 @@ export function OTTPlansDetailed() {
           </Card>
         ))}
       </div>
+
+      
     </div>
-  )
+  );
 }
