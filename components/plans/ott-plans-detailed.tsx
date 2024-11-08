@@ -150,7 +150,7 @@ const ottLogos = [
 
 export function OTTPlansDetailed() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-24">
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {features.map((feature) => {
           const Icon = feature.icon;
@@ -173,23 +173,24 @@ export function OTTPlansDetailed() {
       </div>
 
       <div className="mt-12">
-        <h4 className="font-semibold mb-4 text-center">Our OTT Partners</h4>
-        <div className="flex flex-wrap justify-center gap-4">
+        <h4 className="font-bold mb-4 text-xl text-center">Our OTT Partners</h4>
+        <div className="flex flex-wrap justify-center gap-6 mt-6">
           {ottLogos.map((logo, index) => (
-            <div key={index} className="w-28 h-28">
+            <div key={index} className="w-24 h-24">
               <Image
                 src={logo}
+                key={index}
                 alt={`OTT Partner Logo ${index + 1}`}
                 width={140}
                 height={140}
-                className="object-contain rounded-md"
+                className="object-contain rounded-md h-full hover:scale-125 transition-transform duration-500"
               />
             </div>
           ))}
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-3 gap-6 mt-12">
         {ottPlans.map((plan) => (
           <Card key={plan.name} className="relative overflow-hidden">
             <CardHeader>
@@ -230,8 +231,6 @@ export function OTTPlansDetailed() {
           </Card>
         ))}
       </div>
-
-      
     </div>
   );
 }
