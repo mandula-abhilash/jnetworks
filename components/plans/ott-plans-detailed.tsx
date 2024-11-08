@@ -1,102 +1,198 @@
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Tv, Smartphone, Laptop, Users } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Tv, Smartphone, Laptop, Users, Plus } from "lucide-react";
 import Image from "next/image";
 
-const ottPlans = [
+export const ottPlansData = [
   {
     name: "PB Basic",
-    description: "17 Premium OTT Apps",
-    price: "Contact for Price",
-    apps: [
-      "Sony Liv",
-      "Zee5",
-      "Discovery+",
-      "Eros Now",
-      "Hungama Play",
-      "Epic On",
-      "Shorts TV",
-      "Klikk",
-      "PlayBox TV",
-      "Dollywood Play",
-      "Chaupal",
-      "Planet Marathi",
-      "NammaFlix",
-      "STAGE",
-      "Raj Digital Plus",
-      "Koode",
-      "Rajtamil"
+    premiumApps: [
+      { name: "SonyLIV", logoPath: "/assets/images/ott-partners/sony-liv.png" },
+      { name: "Zee5", logoPath: "/assets/images/ott-partners/zee5.png" }
     ],
-    features: [
-      "Multiple device support",
-      "HD content",
-      "Downloads available",
+    nonPremiumApps: [
+      { name: "ETV Win", logoPath: "/assets/images/ott-partners/etv-win.png" },
+      { name: "Discovery Plus", logoPath: "/assets/images/ott-partners/discovery.png" },
+      { name: "Hungama", logoPath: "/assets/images/ott-partners/hungama.png" },
+      { name: "Shemaroo", logoPath: "/assets/images/ott-partners/shemaroo.png" },
+      { name: "Shorts TV", logoPath: "/assets/images/ott-partners/stage.png" },
+      { name: "Raj DigitalTV", logoPath: "/assets/images/ott-partners/raj-tv.png" },
+      { name: "Hubhopper", logoPath: "/assets/images/ott-partners/hubhopper.png" },
+      { name: "Fancode", logoPath: "/assets/images/ott-partners/fancode.png" },
+      { name: "PlayboxTV", logoPath: "/assets/images/ott-partners/play-box-tv.png" },
+      { name: "1OTT", logoPath: "/assets/images/ott-partners/one.png" },
+      { name: "AaoNxt", logoPath: "/assets/images/ott-partners/aano-nxt.png" },
+      { name: "Chana Jor", logoPath: "/assets/images/ott-partners/chana-jor.png" },
+      { name: "iTap", logoPath: "/assets/images/ott-partners/itap.png" },
+      { name: "OM TV", logoPath: "/assets/images/ott-partners/om-tv.png" },
+      { name: "DistroTV", logoPath: "/assets/images/ott-partners/distro-tv.png" },
+      { name: "Tarang Plus", logoPath: "/assets/images/ott-partners/tarang-plus.png" },
+      { name: "TravelXP", logoPath: "/assets/images/ott-partners/travel-xp.png" }
+    ]
+  },
+  {
+    name: "PB Standard",
+    premiumApps: [
+      { name: "Hotstar", logoPath: "/assets/images/ott-partners/disney-hotstar.png" },
+      { name: "SonyLIV", logoPath: "/assets/images/ott-partners/sony-liv.png" },
+      { name: "Zee5", logoPath: "/assets/images/ott-partners/zee5.png" }
     ],
+    nonPremiumApps: [
+      { name: "ETV Win", logoPath: "/assets/images/ott-partners/etv-win.png" },
+      { name: "Discovery Plus", logoPath: "/assets/images/ott-partners/discovery.png" },
+      { name: "Hungama", logoPath: "/assets/images/ott-partners/hungama.png" },
+      { name: "Shemaroo", logoPath: "/assets/images/ott-partners/shemaroo.png" },
+      { name: "Raj DigitalTV", logoPath: "/assets/images/ott-partners/raj-tv.png" },
+      { name: "Hubhopper", logoPath: "/assets/images/ott-partners/hubhopper.png" },
+      { name: "Fancode", logoPath: "/assets/images/ott-partners/fancode.png" },
+      { name: "PlayboxTV", logoPath: "/assets/images/ott-partners/play-box-tv.png" },
+      { name: "1OTT", logoPath: "/assets/images/ott-partners/one.png" },
+      { name: "AaoNxt", logoPath: "/assets/images/ott-partners/aano-nxt.png" },
+      { name: "iTap", logoPath: "/assets/images/ott-partners/itap.png" },
+      { name: "OM TV", logoPath: "/assets/images/ott-partners/om-tv.png" }
+    ]
   },
   {
     name: "PB Pulse",
-    description: "17 Premium OTT Apps",
-    price: "Contact for Price",
-    apps: [
-      "Sony Liv",
-      "Zee5",
-      "Discovery+",
-      "Eros Now",
-      "Hungama Play",
-      "Epic On",
-      "Shorts TV",
-      "Klikk",
-      "PlayBox TV",
-      "Dollywood Play",
-      "Chaupal",
-      "Planet Marathi",
-      "NammaFlix",
-      "STAGE",
-      "Raj Digital Plus",
-      "Koode",
-      "Rajtamil"
+    premiumApps: [
+      { name: "Hotstar", logoPath: "/assets/images/ott-partners/disney-hotstar.png" },
+      { name: "SonyLIV", logoPath: "/assets/images/ott-partners/sony-liv.png" },
+      { name: "Zee5", logoPath: "/assets/images/ott-partners/zee5.png" }
     ],
-    features: [
-      "Multiple device support",
-      "HD & 4K content",
-      "Priority support",
-    ],
+    nonPremiumApps: [
+      { name: "ETV Win", logoPath: "/assets/images/ott-partners/etv-win.png" },
+      { name: "Discovery Plus", logoPath: "/assets/images/ott-partners/discovery.png" },
+      { name: "Hungama", logoPath: "/assets/images/ott-partners/hungama.png" },
+      { name: "Shemaroo", logoPath: "/assets/images/ott-partners/shemaroo.png" },
+      { name: "Shorts TV", logoPath: "/assets/images/ott-partners/stage.png" },
+      { name: "Raj DigitalTV", logoPath: "/assets/images/ott-partners/raj-tv.png" },
+      { name: "Hubhopper", logoPath: "/assets/images/ott-partners/hubhopper.png" },
+      { name: "Fancode", logoPath: "/assets/images/ott-partners/fancode.png" },
+      { name: "PlayboxTV", logoPath: "/assets/images/ott-partners/play-box-tv.png" },
+      { name: "1OTT", logoPath: "/assets/images/ott-partners/one.png" },
+      { name: "AaoNxt", logoPath: "/assets/images/ott-partners/aano-nxt.png" },
+      { name: "Chana Jor", logoPath: "/assets/images/ott-partners/chana-jor.png" },
+      { name: "iTap", logoPath: "/assets/images/ott-partners/itap.png" },
+      { name: "OM TV", logoPath: "/assets/images/ott-partners/om-tv.png" },
+      { name: "DistroTV", logoPath: "/assets/images/ott-partners/distro-tv.png" },
+      { name: "Tarang Plus", logoPath: "/assets/images/ott-partners/tarang-plus.png" }
+    ]
   },
   {
-    name: "PB Strom",
-    description: "22 Premium OTT Apps",
-    price: "Contact for Price",
-    apps: [
-      "Sony Liv",
-      "Zee5",
-      "Discovery+",
-      "Eros Now",
-      "Aha",
-      "Hungama Play",
-      "Epic On",
-      "Shorts TV",
-      "Klikk",
-      "PlayBox TV",
-      "Dollywood Play",
-      "Chaupal",
-      "Planet Marathi",
-      "NammaFlix",
-      "STAGE",
-      "Raj Digital Plus",
-      "Koode",
-      "Rajtamil",
-      "Sun NXT",
-      "Hoichoi",
-      "Alt Balaji",
-      "Voot"
+    name: "PB Storm",
+    premiumApps: [
+      { name: "Hotstar", logoPath: "/assets/images/ott-partners/disney-hotstar.png" },
+      { name: "SonyLIV", logoPath: "/assets/images/ott-partners/sony-liv.png" },
+      { name: "Zee5", logoPath: "/assets/images/ott-partners/zee5.png" },
+      { name: "Aha Telugu", logoPath: "/assets/images/ott-partners/aha.png" },
+      { name: "SunNXT", logoPath: "/assets/images/ott-partners/sun-nxt.png" }
     ],
-    features: [
-      "Multiple device support",
-      "HD & 4K content",
-      "Premium content access",
-    ],
+    nonPremiumApps: [
+      { name: "ETV Win", logoPath: "/assets/images/ott-partners/etv-win.png" },
+      { name: "ALTBalaji", logoPath: "/assets/images/ott-partners/alt.png" },
+      { name: "Discovery Plus", logoPath: "/assets/images/ott-partners/discovery.png" },
+      { name: "Dangal Play", logoPath: "/assets/images/ott-partners/dangal-play.png" },
+      { name: "Hungama", logoPath: "/assets/images/ott-partners/hungama.png" },
+      { name: "Shemaroo", logoPath: "/assets/images/ott-partners/shemaroo.png" },
+      { name: "Shorts TV", logoPath: "/assets/images/ott-partners/stage.png" },
+      { name: "Raj DigitalTV", logoPath: "/assets/images/ott-partners/raj-tv.png" },
+      { name: "Hubhopper", logoPath: "/assets/images/ott-partners/hubhopper.png" },
+      { name: "Fancode", logoPath: "/assets/images/ott-partners/fancode.png" },
+      { name: "PlayboxTV", logoPath: "/assets/images/ott-partners/play-box-tv.png" },
+      { name: "1OTT", logoPath: "/assets/images/ott-partners/one.png" },
+      { name: "AaoNxt", logoPath: "/assets/images/ott-partners/aano-nxt.png" },
+      { name: "Chana Jor", logoPath: "/assets/images/ott-partners/chana-jor.png" },
+      { name: "iTap", logoPath: "/assets/images/ott-partners/itap.png" },
+      { name: "OM TV", logoPath: "/assets/images/ott-partners/om-tv.png" },
+      { name: "DistroTV", logoPath: "/assets/images/ott-partners/distro-tv.png" },
+      { name: "Kancha Lannka", logoPath: "/assets/images/ott-partners/kanccha-lannka.png" },
+      { name: "Shucae Film", logoPath: "/assets/images/ott-partners/shucae-film.png" }
+    ]
   },
+  {
+    name: "PB Prime",
+    premiumApps: [
+      {
+        name: "Amazon Prime Lite",
+        logoPath: "/assets/images/ott-partners/amazon-prime-lite.png"
+      },
+      {
+        name: "Hotstar",
+        logoPath: "/assets/images/ott-partners/disney-hotstar.png"
+      },
+      {
+        name: "SonyLIV",
+        logoPath: "/assets/images/ott-partners/sony-liv.png"
+      },
+      {
+        name: "Zee5",
+        logoPath: "/assets/images/ott-partners/zee5.png"
+      }
+    ],
+    nonPremiumApps: [
+      { name: "ALTBalaji", logoPath: "/assets/images/ott-partners/alt.png" },
+      { name: "Discovery Plus", logoPath: "/assets/images/ott-partners/discovery.png" },
+      { name: "Dangal Play", logoPath: "/assets/images/ott-partners/dangal-play.png" },
+      { name: "Hungama", logoPath: "/assets/images/ott-partners/hungama.png" },
+      { name: "Shemaroo", logoPath: "/assets/images/ott-partners/shemaroo.png" },
+      { name: "Shorts TV", logoPath: "/assets/images/ott-partners/stage.png" },
+      { name: "Raj DigitalTV", logoPath: "/assets/images/ott-partners/raj-tv.png" },
+      { name: "Hubhopper", logoPath: "/assets/images/ott-partners/hubhopper.png" },
+      { name: "Fancode", logoPath: "/assets/images/ott-partners/fancode.png" },
+      { name: "PlayboxTV", logoPath: "/assets/images/ott-partners/play-box-tv.png" },
+      { name: "1OTT", logoPath: "/assets/images/ott-partners/one.png" },
+      { name: "AaoNxt", logoPath: "/assets/images/ott-partners/aano-nxt.png" },
+      { name: "Chana Jor", logoPath: "/assets/images/ott-partners/chana-jor.png" },
+      { name: "iTap", logoPath: "/assets/images/ott-partners/itap.png" },
+      { name: "OM TV", logoPath: "/assets/images/ott-partners/om-tv.png" },
+      { name: "DistroTV", logoPath: "/assets/images/ott-partners/distro-tv.png" },
+      { name: "Kancha Lannka", logoPath: "/assets/images/ott-partners/kanccha-lannka.png" },
+      { name: "Shucae Film", logoPath: "/assets/images/ott-partners/shucae-film.png" }
+    ]
+  },
+  {
+    name: "PB Stream 365",
+    premiumApps: [
+      {
+        name: "Amazon Prime Lite",
+        logoPath: "/assets/images/ott-partners/amazon-prime-lite.png"
+      },
+      {
+        name: "Hotstar",
+        logoPath: "/assets/images/ott-partners/disney-hotstar.png"
+      },
+      {
+        name: "SonyLIV",
+        logoPath: "/assets/images/ott-partners/sony-liv.png"
+      },
+      {
+        name: "Zee5",
+        logoPath: "/assets/images/ott-partners/zee5.png"
+      }
+    ],
+    nonPremiumApps: [
+      { name: "ALTBalaji", logoPath: "/assets/images/ott-partners/alt.png" },
+      { name: "Discovery Plus", logoPath: "/assets/images/ott-partners/discovery.png" },
+      { name: "Dangal Play", logoPath: "/assets/images/ott-partners/dangal-play.png" },
+      { name: "Hungama", logoPath: "/assets/images/ott-partners/hungama.png" },
+      { name: "Shemaroo", logoPath: "/assets/images/ott-partners/shemaroo.png" },
+      { name: "Shorts TV", logoPath: "/assets/images/ott-partners/stage.png" },
+      { name: "Raj DigitalTV", logoPath: "/assets/images/ott-partners/raj-tv.png" },
+      { name: "Hubhopper", logoPath: "/assets/images/ott-partners/hubhopper.png" },
+      { name: "Fancode", logoPath: "/assets/images/ott-partners/fancode.png" },
+      { name: "PlayboxTV", logoPath: "/assets/images/ott-partners/play-box-tv.png" },
+      { name: "1OTT", logoPath: "/assets/images/ott-partners/one.png" },
+      { name: "AaoNxt", logoPath: "/assets/images/ott-partners/aano-nxt.png" },
+      { name: "Chana Jor", logoPath: "/assets/images/ott-partners/chana-jor.png" },
+      { name: "iTap", logoPath: "/assets/images/ott-partners/itap.png" },
+      { name: "OM TV", logoPath: "/assets/images/ott-partners/om-tv.png" },
+      { name: "DistroTV", logoPath: "/assets/images/ott-partners/distro-tv.png" },
+      { name: "Kancha Lannka", logoPath: "/assets/images/ott-partners/kanccha-lannka.png" },
+      { name: "Shucae Film", logoPath: "/assets/images/ott-partners/shucae-film.png" }
+    ]
+  }
 ];
 
 const features = [
@@ -179,7 +275,6 @@ export function OTTPlansDetailed() {
             <div key={index} className="w-24 h-24">
               <Image
                 src={logo}
-                key={index}
                 alt={`OTT Partner Logo ${index + 1}`}
                 width={140}
                 height={140}
@@ -191,8 +286,8 @@ export function OTTPlansDetailed() {
       </div>
 
       <div className="grid md:grid-cols-3 gap-6 mt-12">
-        {ottPlans.map((plan) => (
-          <Card key={plan.name} className="relative overflow-hidden">
+        {ottPlansData.map((plan) => (
+          <Card key={plan.name} className="relative">
             <CardHeader>
               <div className="flex items-center gap-4 mb-2">
                 <div className="p-2 rounded-lg bg-primary/10">
@@ -200,31 +295,58 @@ export function OTTPlansDetailed() {
                 </div>
                 <CardTitle>{plan.name}</CardTitle>
               </div>
-              <p className="text-muted-foreground">{plan.description}</p>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div>
-                  <h4 className="font-semibold mb-2">Included Apps</h4>
-                  <div className="grid grid-cols-2 gap-2">
-                    {plan.apps.map((app) => (
-                      <div key={app} className="flex items-center gap-2">
-                        <Check className="h-4 w-4 flex-shrink-0 text-primary" />
-                        <span className="text-sm">{app}</span>
+                  <h4 className="font-semibold mb-3">Premium Apps</h4>
+                  <div className="flex flex-wrap gap-3">
+                    {plan.premiumApps.map((app) => (
+                      <div
+                        key={app.name}
+                        className="relative group"
+                      >
+                        <Image
+                          src={app.logoPath}
+                          alt={app.name}
+                          width={40}
+                          height={40}
+                          className="object-contain rounded-md"
+                        />
                       </div>
                     ))}
                   </div>
                 </div>
+
                 <div>
-                  <h4 className="font-semibold mb-2">Features</h4>
-                  <ul className="space-y-2">
-                    {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2">
-                        <Check className="h-4 w-4 text-primary" />
-                        <span className="text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors">
+                        <span>plus {plan.nonPremiumApps.length} additional apps included</span>
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-2xl">
+                      <div className="p-4">
+                        <h3 className="text-lg font-semibold mb-4">Additional Apps in {plan.name}</h3>
+                        <div className="flex flex-wrap gap-4">
+                          {plan.nonPremiumApps.map((app) => (
+                            <div key={app.name} className="flex flex-col items-center gap-2">
+                              <Image
+                                src={app.logoPath}
+                                alt={app.name}
+                                width={80}
+                                height={80}
+                                className="object-contain rounded-md"
+                              />
+                              <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                                {app.name}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </div>
             </CardContent>

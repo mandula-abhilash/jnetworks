@@ -22,7 +22,7 @@ export function Navbar() {
             alt="JNB Networks Logo"
             width={100}
             height={25} 
-            className="object-contain" 
+            className="object-contain dark:bg-white dark:rounded-md" 
           />
         </Link>
 
