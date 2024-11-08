@@ -116,7 +116,7 @@ export const ottPlansData = [
     premiumApps: [
       {
         name: "Amazon Prime Lite",
-        logoPath: "/assets/images/ott-partners/amazon-prime-lite.png"
+        logoPath: "/assets/images/ott-partners/amazon-prime-lite.jpg"
       },
       {
         name: "Hotstar",
@@ -157,7 +157,7 @@ export const ottPlansData = [
     premiumApps: [
       {
         name: "Amazon Prime Lite",
-        logoPath: "/assets/images/ott-partners/amazon-prime-lite.png"
+        logoPath: "/assets/images/ott-partners/amazon-prime-lite.jpg"
       },
       {
         name: "Hotstar",
@@ -328,7 +328,7 @@ export function OTTPlansDetailed() {
                     <DialogContent className="max-w-2xl">
                       <div className="p-4">
                         <h3 className="text-lg font-semibold mb-4">Additional Apps in {plan.name}</h3>
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex flex-wrap gap-4 max-h-[400px] overflow-y-auto">
                           {plan.nonPremiumApps.map((app) => (
                             <div key={app.name} className="flex flex-col items-center gap-2">
                               <Image

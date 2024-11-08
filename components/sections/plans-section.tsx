@@ -23,7 +23,7 @@ const planCategories = [
     description: "Premium entertainment packages with multiple OTT platforms",
     icon: Tv,
     features: [
-      "Up to 22 Premium Apps",
+      "Up to 24 Premium Apps",
       "Popular Platforms",
       "Multiple Devices",
       "HD & 4K Content",
