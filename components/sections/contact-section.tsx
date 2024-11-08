@@ -1,10 +1,10 @@
-import { MapPin, Phone, Mail, MessageSquare, Clock } from "lucide-react"
-import { Card } from "@/components/ui/card"
+import { MapPin, Phone, Mail, MessageSquare, Clock } from "lucide-react";
+import { Card } from "@/components/ui/card";
 
 export function ContactSection() {
   return (
     <section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-background">
-      <div className="container px-4 mx-auto md:px-6">
+      <div className="px-4 mx-auto md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Contact Us</h2>
           <p className="mt-4 text-muted-foreground md:text-lg">
@@ -20,6 +20,7 @@ export function ContactSection() {
                 <div>
                   <h3 className="font-semibold mb-1">Address</h3>
                   <p className="text-muted-foreground">
+                    <strong>Jabbar Network Solutions Private Limited</strong><br />
                     11-5, Pothireddypally X Road,<br />
                     Sangareddy, Telangana 502295
                   </p>

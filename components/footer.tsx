@@ -3,7 +3,7 @@ import Link from "next/link"
 export function Footer() {
   return (
     <footer className="w-full bg-background">
-      <div className="container px-4 md:px-6 lg:px-6">
+      <div className="px-4 md:px-6 lg:px-6">
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-col lg:flex-row justify-center lg:justify-between items-center py-6 text-sm text-muted-foreground space-y-4 lg:space-y-0">
           <p className="text-center lg:text-left">© {new Date().getFullYear()} Jabbar Network Solutions Private Limited. All rights reserved.</p>

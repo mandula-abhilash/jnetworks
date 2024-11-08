@@ -13,7 +13,7 @@ const planCategories = [
     features: [
       "Speeds up to 200 Mbps",
       "Unlimited Data with 1000GB FUP",
-      "Free Installation",
+      "Seamless Setup Experience",
       "24/7 Support",
     ],
     href: "/plans/broadband",
@@ -35,7 +35,7 @@ const planCategories = [
 export function PlansSection() {
   return (
     <div id="plans" className="w-full py-16 bg-background">
-      <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+      <div className="mx-auto px-4 md:px-6 max-w-7xl">
         <div className="flex flex-col items-center justify-center text-center max-w-[800px] mx-auto mb-12">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
             Choose Your Perfect Plan
