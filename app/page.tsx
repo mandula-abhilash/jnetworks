@@ -4,6 +4,7 @@ import { PlansSection } from "@/components/sections/plans-section"
 import { PartnersSection } from "@/components/sections/partners-section"
 import { ReviewsSection } from "@/components/sections/reviews-section"
 import { ContactSection } from "@/components/sections/contact-section"
+import { LogoVideo } from "@/components/sections/logo-video"
 import { Navbar } from "@/components/navbar"
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <PlansSection />
         <PartnersSection />
         <ReviewsSection />
+        <LogoVideo />
         <ContactSection />
       </main>
     </>
