@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { getAuth, onAuthStateChanged } from "firebase/auth"; 
-import { BroadbandPlan, getBroadbandPlans, addBroadbandPlan, updateBroadbandPlan, deleteBroadbandPlan } from "@/lib/plans"
+import { BroadbandPlan, getBroadbandPlans, addBroadbandPlan, updateBroadbandPlan, deleteBroadbandPlan } from "@/lib/firebase/plans"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"

@@ -10,7 +10,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Wifi, Zap, Download, Clock } from "lucide-react";
-import { BroadbandPlan, getBroadbandPlans } from "@/lib/plans";
+import { BroadbandPlan, getBroadbandPlans } from "@/lib/firebase/plans";
 
 const features = [
   {
