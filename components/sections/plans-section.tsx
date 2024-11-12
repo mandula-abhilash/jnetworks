@@ -11,7 +11,7 @@ export function PlansSection() {
   const [broadbandPlans, setBroadbandPlans] = useState<BroadbandPlan[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [lowestPlanPrice, setLowestPlanPrice] = useState<number | null>(null);
+  const [lowestPlanPrice, setLowestPlanPrice] = useState<number>(0); // Initialize with 0
 
   useEffect(() => {
     async function fetchPlans() {
@@ -35,37 +35,6 @@ export function PlansSection() {
     fetchPlans();
   }, []);
 
-  const planCategories = [
-    {
-      title: "Broadband Plans",
-      description: loading
-        ? "Loading..."
-        : error
-        ? "Unable to load broadband plans."
-        : `High-speed internet plans starting from ₹${lowestPlanPrice}/month`,
-      icon: Wifi,
-      features: [
-        "Speeds up to 200 Mbps",
-        "Unlimited Data with 1000GB FUP",
-        "Seamless Setup Experience",
-        "24/7 Support",
-      ],
-      href: "/plans/broadband",
-    },
-    {
-      title: " Broadband Plus OTT Combo",
-      description: "High-speed broadband bundled with premium OTT entertainment.",
-      icon: Tv,
-      features: [
-        "Up to 24 Premium Apps",
-        "Popular Platforms",
-        "Multiple Devices",
-        "HD & 4K Content",
-      ],
-      href: "/plans/ott",
-    },
-  ];
-
   return (
     <div id="plans" className="w-full py-16 bg-background">
       <div className="mx-auto px-4 md:px-6 max-w-7xl">
@@ -79,7 +48,36 @@ export function PlansSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {planCategories.map((category) => {
+          {[
+            {
+              title: "Broadband Plans",
+              description: loading
+                ? "Loading..."
+                : error
+                ? "Unable to load broadband plans."
+                : `High-speed internet plans starting from ₹${lowestPlanPrice}/month`,
+              icon: Wifi,
+              features: [
+                "Speeds up to 200 Mbps",
+                "Unlimited Data with 1000GB FUP",
+                "Seamless Setup Experience",
+                "24/7 Support",
+              ],
+              href: "/plans/broadband",
+            },
+            {
+              title: "Broadband Plus OTT Combo",
+              description: "High-speed broadband bundled with premium OTT entertainment.",
+              icon: Tv,
+              features: [
+                "Up to 24 Premium Apps",
+                "Popular Platforms",
+                "Multiple Devices",
+                "HD & 4K Content",
+              ],
+              href: "/plans/ott",
+            },
+          ].map((category) => {
             const Icon = category.icon;
             return (
               <Card key={category.title} className="relative overflow-hidden">
