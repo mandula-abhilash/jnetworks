@@ -54,7 +54,7 @@ export function PlansSection() {
     },
     {
       title: " Broadband Plus OTT Combo",
-      description: "High-speed broadband with premium OTT, starting from ₹X/month.",
+      description: "High-speed broadband bundled with premium OTT entertainment.",
       icon: Tv,
       features: [
         "Up to 24 Premium Apps",
