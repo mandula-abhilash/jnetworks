@@ -122,9 +122,16 @@ export function BroadbandPlansDetailed() {
                         </TableCell>
                         <TableCell>{plan.speed} Mbps</TableCell>
                         <TableCell>{plan.description}</TableCell>
-                        <TableCell className="text-right">₹{plan.monthly}</TableCell>
-                        <TableCell className="text-right">₹{plan.halfYearly}</TableCell>
-                        <TableCell className="text-right">₹{plan.yearly}</TableCell>
+                        <TableCell className="text-right">
+                          {plan.monthly && plan.monthly > 0 ? `₹${plan.monthly}` : "NA"}
+                        </TableCell>
+                        <TableCell className="text-right">
+                          {plan.halfYearly && plan.halfYearly > 0 ? `₹${plan.halfYearly}` : "NA"}
+                        </TableCell>
+                        <TableCell className="text-right">
+                          {plan.yearly && plan.yearly > 0 ? `₹${plan.yearly}` : "NA"}
+                        </TableCell>
+
                       </TableRow>
                     );
                   })}

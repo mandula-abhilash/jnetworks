@@ -177,7 +177,9 @@ export function OTTPlansDetailed() {
                               <div className="text-sm text-muted-foreground">
                                 {durationLabels[price.duration]}
                               </div>
-                              <div className="text-xl font-bold">₹{price.price}</div>
+                              <div className="text-xl font-bold">
+                                {price.price && price.price > 0 ? `₹${price.price}` : "NA"}
+                              </div>
                             </div>
                           ))}
                         </div>

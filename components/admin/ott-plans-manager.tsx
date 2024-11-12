@@ -249,7 +249,9 @@ export function OTTPlansManager() {
                                price.duration === '3M' ? 'Quarterly' :
                                price.duration === '6M' ? 'Half Yearly' : 'Yearly'}:
                             </span>
-                            <span>₹{price.price}</span>
+                            <span>                                
+                              {price.price && price.price > 0 ? `₹${price.price}` : "NA"}
+                            </span>
                           </div>
                         ))}
                       </div>

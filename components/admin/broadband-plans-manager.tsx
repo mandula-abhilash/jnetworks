@@ -292,9 +292,15 @@ export function BroadbandPlansManager() {
                   <TableCell>{plan.name}</TableCell>
                   <TableCell>{plan.description}</TableCell>
                   <TableCell>{plan.speed} Mbps</TableCell>
-                  <TableCell>₹{plan.monthly}</TableCell>
-                  <TableCell>₹{plan.halfYearly}</TableCell>
-                  <TableCell>₹{plan.yearly}</TableCell>
+                  <TableCell>
+                    {plan.monthly && plan.monthly > 0 ? `₹${plan.monthly}` : "NA"}
+                  </TableCell>
+                  <TableCell>
+                   {plan.halfYearly && plan.halfYearly > 0 ? `₹${plan.halfYearly}` : "NA"}
+                  </TableCell>
+                  <TableCell>
+                    {plan.yearly && plan.yearly > 0 ? `₹${plan.yearly}` : "NA"}
+                  </TableCell>
                   <TableCell>
                     <div className="flex gap-2">
                       <Button
