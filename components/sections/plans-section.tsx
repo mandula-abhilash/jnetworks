@@ -11,7 +11,7 @@ export function PlansSection() {
   const [broadbandPlans, setBroadbandPlans] = useState<BroadbandPlan[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [lowestPlanPrice, setLowestPlanPrice] = useState<number>(0); // Initialize with 0
+  const [lowestPlanPrice, setLowestPlanPrice] = useState<number>(300); 
 
   useEffect(() => {
     async function fetchPlans() {
