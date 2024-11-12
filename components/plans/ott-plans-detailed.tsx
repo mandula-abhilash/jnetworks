@@ -207,15 +207,18 @@ export function OTTPlansDetailed() {
                       <h3 className="text-lg font-semibold mb-4">Additional Apps Included</h3>
                       <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-4">
                         {plan.nonPremiumApps.map((app, index) => (
-                          <div key={index} className="flex flex-col items-center gap-2">
+                          <div
+                            key={index}
+                            className="flex flex-col items-center justify-center gap-2 h-full"
+                          >
                             <Image
                               src={app.logoPath}
                               alt={app.name}
-                              width={40}
-                              height={40}
+                              width={60} 
+                              height={60}
                               className="object-contain rounded-md"
                             />
-                            <span className="text-xs text-center">{app.name}</span>
+                            <span className="text-sm text-center">{app.name}</span>
                           </div>
                         ))}
                       </div>
