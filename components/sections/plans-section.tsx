@@ -1,38 +1,71 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Wifi, Tv } from "lucide-react"
-
-const planCategories = [
-  {
-    title: "Broadband Plans",
-    description: "High-speed internet plans starting from ₹250/month",
-    icon: Wifi,
-    features: [
-      "Speeds up to 200 Mbps",
-      "Unlimited Data with 1000GB FUP",
-      "Seamless Setup Experience",
-      "24/7 Support",
-    ],
-    href: "/plans/broadband",
-  },
-  {
-    title: "OTT Plans",
-    description: "Premium entertainment packages with multiple OTT platforms",
-    icon: Tv,
-    features: [
-      "Up to 24 Premium Apps",
-      "Popular Platforms",
-      "Multiple Devices",
-      "HD & 4K Content",
-    ],
-    href: "/plans/ott",
-  },
-]
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Wifi, Tv } from "lucide-react";
+import { BroadbandPlan, getBroadbandPlans } from "@/lib/firebase/plans";
 
 export function PlansSection() {
+  const [broadbandPlans, setBroadbandPlans] = useState<BroadbandPlan[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [lowestPlanPrice, setLowestPlanPrice] = useState<number | null>(null);
+
+  useEffect(() => {
+    async function fetchPlans() {
+      try {
+        const plans = await getBroadbandPlans();
+        setBroadbandPlans(plans);
+        setError(null);
+
+        if (plans.length > 0) {
+          const sortedPlans = [...plans].sort((a, b) => a.monthly - b.monthly);
+          setLowestPlanPrice(sortedPlans[0].monthly);
+        }
+      } catch (error) {
+        console.error("Error fetching plans:", error);
+        setError("Failed to load plans. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPlans();
+  }, []);
+
+  const planCategories = [
+    {
+      title: "Broadband Plans",
+      description: loading
+        ? "Loading..."
+        : error
+        ? "Unable to load broadband plans."
+        : `High-speed internet plans starting from ₹${lowestPlanPrice}/month`,
+      icon: Wifi,
+      features: [
+        "Speeds up to 200 Mbps",
+        "Unlimited Data with 1000GB FUP",
+        "Seamless Setup Experience",
+        "24/7 Support",
+      ],
+      href: "/plans/broadband",
+    },
+    {
+      title: " Broadband Plus OTT Combo",
+      description: "High-speed broadband with premium OTT, starting from ₹X/month.",
+      icon: Tv,
+      features: [
+        "Up to 24 Premium Apps",
+        "Popular Platforms",
+        "Multiple Devices",
+        "HD & 4K Content",
+      ],
+      href: "/plans/ott",
+    },
+  ];
+
   return (
     <div id="plans" className="w-full py-16 bg-background">
       <div className="mx-auto px-4 md:px-6 max-w-7xl">
@@ -47,7 +80,7 @@ export function PlansSection() {
 
         <div className="grid md:grid-cols-2 gap-8">
           {planCategories.map((category) => {
-            const Icon = category.icon
+            const Icon = category.icon;
             return (
               <Card key={category.title} className="relative overflow-hidden">
                 <CardHeader className="pb-4">
@@ -76,10 +109,10 @@ export function PlansSection() {
                   </Button>
                 </CardContent>
               </Card>
-            )
+            );
           })}
         </div>
       </div>
     </div>
-  )
+  );
 }
