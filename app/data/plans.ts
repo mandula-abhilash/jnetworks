@@ -24,8 +24,6 @@ export interface OTTPlan {
   premiumApps: OTTApp[];
   nonPremiumApps: OTTApp[];
 }
-
-// export const ottPlansData: OTTPlan[] = [
 //   {
 //     name: "PB Basic",
 //     variants: {
