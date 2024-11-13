@@ -31,7 +31,8 @@ export function Hero() {
           className="w-full h-full object-cover"
           poster="/assets/images/hero-poster.jpg"
         >
-          <source src="/assets/videos/hero-background.mp4" type="video/mp4" />
+          {/* <source src="/assets/videos/hero-background.mp4" type="video/mp4" /> */}
+          <source src="https://videos.pexels.com/video-files/3141208/3141208-uhd_2560_1440_25fps.mp4" type="video/mp4" />
         </video>
       </div>
 
