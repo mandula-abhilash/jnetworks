@@ -159,6 +159,10 @@ export function BroadbandPlansDetailed() {
               <Badge variant="secondary">Setup</Badge>
               One-time installation and WiFi router charges apply as per location
             </li>
+            <li className="flex items-center gap-2">
+              <Badge variant="destructive">Notice</Badge>
+              Prices listed are applicable to Sangareddy town only. Prices for rural areas may vary based on location and feasibility.
+            </li>
           </ul>
         </CardContent>
       </Card>
