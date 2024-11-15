@@ -11,10 +11,6 @@ const partners = [
   { 
     name: "Iconwave Technologies Private Limited", 
     logo: "/assets/images/partners/icon-wave.svg"
-  },
-  { 
-    name: "PlayboxTv", 
-    logo: "/assets/images/partners/play-box-tv.png"
   }
 ]
 
